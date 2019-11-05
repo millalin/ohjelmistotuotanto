@@ -22,9 +22,9 @@ public class Statistics {
                 return player;
             }
         }
-
         return null;
     }
+
 
     public List<Player> team(String teamName) {
         ArrayList<Player> playersOfTeam = new ArrayList<Player>();
