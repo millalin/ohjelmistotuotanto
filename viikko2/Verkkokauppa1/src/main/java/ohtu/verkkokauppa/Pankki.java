@@ -6,19 +6,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class Pankki implements PankkiIO {
 
-    public Kirjanpito kirjanpito;
-
     @Autowired
-    public Pankki(Kirjanpito kirjanpito) {
-        this.kirjanpito=kirjanpito;
-    }
-
-
+    public KirjanpitoIO kirjanpito;
 
     @Override
     public boolean tilisiirto(String nimi, int viitenumero, String tililta, String tilille, int summa) {
-        kirjanpito.lisaaTapahtuma("tilisiirto: tililtä " + tilille + " tilille " + tilille
-                + " viite " + viitenumero + " summa " + summa + "e");
+        kirjanpito.lisaaTapahtuma("tilisiirto: tililtä " + tilille + " tilille " + tilille + " viite " + viitenumero
+                + " summa " + summa + "e");
 
         // täällä olisi koodi joka ottaa yhteyden pankin verkkorajapintaan
         return true;
