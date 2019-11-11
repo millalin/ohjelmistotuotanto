@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="As a user I want to be able to increase the counter value" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-11-09T15:29:23" hostname="milla-ThinkPad-E580" time="0.01">
+<testsuite name="As a user I want to be able to increase the counter value" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-11-09T16:10:37" hostname="milla-ThinkPad-E580" time="0.01">
   <properties/>
-  <testcase name="Increment once" classname="As a user I want to be able to increase the counter value" time="0.008"/>
+  <testcase name="Increment once" classname="As a user I want to be able to increase the counter value" time="0.007"/>
   <testcase name="Increment by many" classname="As a user I want to be able to increase the counter value" time="0.001"/>
   <testcase name="Increment many times" classname="As a user I want to be able to increase the counter value" time="0.001"/>
   <system-out><![CDATA[Feature: As a user I want to be able to increase the counter value

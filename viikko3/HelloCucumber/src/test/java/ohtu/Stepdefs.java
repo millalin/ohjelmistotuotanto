@@ -32,7 +32,7 @@ public class Stepdefs {
     @When("it is reset")
     public void itIsReset() {
         counter.reset();
-        
+
     }
 
 }
