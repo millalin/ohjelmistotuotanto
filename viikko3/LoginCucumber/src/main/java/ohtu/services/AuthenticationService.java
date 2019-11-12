@@ -46,15 +46,11 @@ public class AuthenticationService {
         if (password.length() < 8 ) {
             return true;
         }
-        int letters = 0;
-        for (int i = 0; i < password.length() ; i++) {
-            if (Character.isLetter(password.charAt(i))) {
-                letters++;
-            }
-        }
-        if (letters == password.length()) {
+        
+        if (password.chars().allMatch(Character::isLetter)) {
             return true;
         }
+        
         return false;
     }
 }
