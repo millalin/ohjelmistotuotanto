@@ -39,6 +39,9 @@ public class Player implements Comparable<Player> {
 
     @Override
     public int compareTo(Player player) {
+        if (player.getTotal() == this.getTotal()) {
+            return Integer.compare(player.goals, this.goals);
+        }
         return Integer.compare(player.getTotal(), this.getTotal());
     }
 
