@@ -14,11 +14,12 @@ import javafx.scene.control.Button;
  */
 public class Nollaa extends Komento {
 
-    private TextField tuloskentta;
-    private TextField syotekentta;
-    private javafx.scene.control.Button nollaa;
-    private javafx.scene.control.Button undo;
-    private Sovelluslogiikka sovellus;
+    private final TextField tuloskentta;
+    private final TextField syotekentta;
+    private final Button nollaa;
+    private final Button undo;
+    private final Sovelluslogiikka sovellus;
+    private int edellinenTulos;
 
     public Nollaa(TextField tuloskentta, TextField syotekentta, Button nollaa, Button undo, Sovelluslogiikka sovellus) {
         this.tuloskentta = tuloskentta;
@@ -30,23 +31,24 @@ public class Nollaa extends Komento {
 
     public void suorita() {
 
+        try {
+            edellinenTulos = Integer.parseInt(tuloskentta.getText());
+        } catch (Exception e) {
+        }
         sovellus.nollaa();
 
-        int laskunTulos = sovellus.tulos();
-
         syotekentta.setText("");
-        tuloskentta.setText("" + laskunTulos);
+        tuloskentta.setText("0");
 
-        if (laskunTulos == 0) {
-            nollaa.disableProperty().set(true);
-        } else {
-            nollaa.disableProperty().set(false);
-        }
+        nollaa.disableProperty().set(true);
+
         undo.disableProperty().set(false);
     }
 
     public void peru() {
-        System.out.println("undo pressed");
+        tuloskentta.setText("" + edellinenTulos);
+        sovellus.plus(edellinenTulos);
+        undo.disableProperty().set(true);
     }
 
 }

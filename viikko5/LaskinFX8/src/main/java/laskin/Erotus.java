@@ -7,17 +7,19 @@ package laskin;
 
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
+
 /**
  *
  * @author milla
  */
 public class Erotus extends Komento {
 
-    private TextField tuloskentta;
-    private TextField syotekentta;
-    private javafx.scene.control.Button nollaa;
-    private javafx.scene.control.Button undo;
-    private Sovelluslogiikka sovellus;
+    private final TextField tuloskentta;
+    private final TextField syotekentta;
+    private final Button nollaa;
+    private final Button undo;
+    private final Sovelluslogiikka sovellus;
+    private int arvo;
 
     public Erotus(TextField tuloskentta, TextField syotekentta, Button nollaa, Button undo, Sovelluslogiikka sovellus) {
         this.tuloskentta = tuloskentta;
@@ -28,7 +30,6 @@ public class Erotus extends Komento {
     }
 
     public void suorita() {
-        int arvo = 0;
 
         try {
             arvo = Integer.parseInt(syotekentta.getText());
@@ -42,16 +43,24 @@ public class Erotus extends Komento {
         syotekentta.setText("");
         tuloskentta.setText("" + laskunTulos);
 
+        nollausPainikkeenToiminta(laskunTulos);
+        undo.disableProperty().set(false);
+    }
+
+    public void peru() {
+        sovellus.plus(arvo);
+        int laskunTulos = sovellus.tulos();
+        tuloskentta.setText("" + laskunTulos);
+        undo.disableProperty().set(true);
+        nollausPainikkeenToiminta(laskunTulos);
+
+    }
+
+    public void nollausPainikkeenToiminta(int laskunTulos) {
         if (laskunTulos == 0) {
             nollaa.disableProperty().set(true);
         } else {
             nollaa.disableProperty().set(false);
         }
-        undo.disableProperty().set(false);
-    }
-
-    public void peru() {
-        System.out.println("undo pressed");
-
     }
 }
